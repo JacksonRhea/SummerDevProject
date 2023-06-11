@@ -12,6 +12,8 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform target;
     private int pathIndex = 0;
+    public int health = 100;
+    public LevelManager LevelManager;
 
     private void Start(){
         target = LevelManager.main.path[pathIndex];
@@ -22,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
             pathIndex++;
             if(pathIndex == LevelManager.main.path.Length){
                 Debug.Log("Here");
+                LevelManager.removeHealth(5);
                 Destroy(gameObject);
                 return;
             }else{
